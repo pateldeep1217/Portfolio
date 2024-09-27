@@ -43,7 +43,7 @@ h6 {
 
 /* THEME VARIABLES */
 html {
-  --content-width: 55rem;
+  --content-width: 70rem;
   --outer-content-width: 80rem;
   --viewport-padding: 16px;
   --header-height: 5rem;
@@ -60,16 +60,23 @@ html {
 
 /* GLOBAL STYLES */
 
-html{
+html {
   background-color: var(--color-background);
   color: var(--color-text);
+  font-weight: 400;
 }
 
+h1 {
+  font-size: clamp(2rem, 5vw, 2.625rem);
+}
+h3 {
+  font-weight: 400;
+}
 
-button{
+button {
   border: none;
   outline: none;
   background: transparent;
-  color:  var(--color-text);
+  color: var(--color-text);
   cursor: pointer;
 }
