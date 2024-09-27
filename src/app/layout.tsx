@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import './styles.css'
+import { cookies } from "next/headers";
+import {  DARK_TOKENS, LIGHT_TOKENS } from "@/constants";
+
+import ThemeToggle from "@/components/ThemeToggle";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,9 +27,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const savedTheme = cookies().get(
+    'color-theme'
+  );
+  const theme = savedTheme?.value || 'light';
+
+ 
+
   return (
-    <html lang="en">
+    <html lang="en" data-color-theme={theme}
+    style={
+      theme === 'light'
+        ? LIGHT_TOKENS
+        : DARK_TOKENS
+    }>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ThemeToggle initialTheme={theme}/>
         {children}
       </body>
     </html>
